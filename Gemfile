@@ -56,6 +56,8 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'devise', '~> 2.2.3'
 gem 'cancan', '~> 1.6.9'
 
+gem "paperclip", "~> 3.0"
+
 gem "redcarpet"
 
 # To use Jbuilder templates for JSON
