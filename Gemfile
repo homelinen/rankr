@@ -25,6 +25,8 @@ gem "haml-rails", "~> 0.4"
 
 gem "nifty-generators", "~> 0.4.6", :group => :development
 
+gem "zeus", :group => :development, :require => false
+
 # Testing Gems
 gem 'rspec-rails', '~> 2.0', :group => [:test, :development]
 group :test do
@@ -53,6 +55,8 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem 'devise', '~> 2.2.3'
 gem 'cancan', '~> 1.6.9'
+
+gem "redcarpet"
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
