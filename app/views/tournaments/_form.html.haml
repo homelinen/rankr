@@ -1,0 +1,22 @@
+= form_for @tournament do |f|
+  - if @tournament.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@tournament.errors.count, "error")} prohibited this tournament from being saved:"
+      %ul
+        - @tournament.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+
+  -# TODO: May be useful for admin
+  -#.field
+    -#= f.label :user
+    -#= f.text_field :user
+
+  .field
+    = f.label :start
+    = f.date_select :start, :start_year => Date.today.year - 1
+  .actions
+    = f.submit 'Save'
