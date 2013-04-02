@@ -1,12 +1,24 @@
-%p#notice= notice
-
-%p
-  %b Name:
+%h1
   = @tournament.name
-%p
-  %b Start:
-  = @tournament.start
+  %small
+    = @tournament.start
 
-= link_to 'Edit', edit_tournament_path(@tournament)
-\|
-= link_to 'Back', tournaments_path
+- unless @tournament.awards.empty?
+  %h2
+    Awards
+
+  %ul.awards
+    - @tournament.awards.order('amount DESC').each do |award|
+      %li
+        %strong
+          = award.print_username
+        %span.badge
+          = award.amount
+
+%ul.pager
+  %li.previous
+    = link_to 'Back', tournaments_path
+  %li
+    = link_to 'Edit', edit_tournament_path(@tournament)
+  %li.next
+    = link_to 'New Award', new_tournament_award_path(@tournament)

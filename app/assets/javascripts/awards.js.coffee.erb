@@ -1,0 +1,23 @@
+
+$(document).ready(->
+ 
+  users = []
+  $.getJSON('/users.json', (json) ->
+    array = json
+
+    for user in array
+      users.push user.username
+
+    return
+  )
+
+  $('.typeahead').click(->
+    $('.typeahead').typeahead({
+      source: users,
+      display: 'username',
+      val: 'username'
+    })
+  )
+
+  return
+)

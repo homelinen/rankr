@@ -1,7 +1,11 @@
 Rankable::Application.routes.draw do
 
-  resources :tournaments
+  resources :awards, :only => [:new, :create, :show, :edit, :destory]
+  resources :tournaments do
+    resources :awards
+  end
 
+  resources :users, :only => [:index, :show]
 
   devise_for :users
 

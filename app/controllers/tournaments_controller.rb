@@ -1,10 +1,10 @@
 class TournamentsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :only => [:new]
 
   # GET /tournaments
   # GET /tournaments.json
   def index
-    @tournaments = Tournament.all
+    @tournaments = Tournament.order('start').all
 
     respond_to do |format|
       format.html # index.html.erb
