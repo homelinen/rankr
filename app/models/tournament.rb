@@ -2,7 +2,7 @@ class Tournament < ActiveRecord::Base
   belongs_to :user
   attr_accessible :name, :start
 
-  has_many :awards
+  has_many :matches
 
   validates_presence_of :name, :user
 

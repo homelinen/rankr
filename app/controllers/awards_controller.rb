@@ -61,7 +61,6 @@ class AwardsController < ApplicationController
       @award.username = @username
     end
 
-
     respond_to do |format|
       if @award.save
         format.html { redirect_to @award, notice: 'Award was successfully created.' }

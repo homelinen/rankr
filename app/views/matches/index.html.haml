@@ -1,0 +1,28 @@
+%h1 
+  Matches
+  - if @tournament.nil?
+    By Game Type
+
+%table.table.table-bordered
+  %tr
+    %th Name
+    %th Tournament
+    %th Game
+    %th
+    %th
+    %th
+
+  - @matches.each do |match|
+    %tr
+      %td= match.name
+      %td
+        =link_to match.tournament.name, match.tournament
+      %td= match.game
+      %td= link_to 'Show', match
+      %td= link_to 'Edit', edit_match_path(match)
+      %td= link_to 'Destroy', match, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+-if @tournament
+  = link_to 'New Match', new_tournament_match_path

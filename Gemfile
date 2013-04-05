@@ -20,6 +20,8 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
+
 gem 'anjlab-bootstrap-rails', '>= 2.3', :require => 'bootstrap-rails'
 gem "haml-rails", "~> 0.4"
 

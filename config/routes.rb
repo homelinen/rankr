@@ -1,8 +1,12 @@
 Rankable::Application.routes.draw do
 
   resources :awards, :only => [:new, :create, :show, :edit, :destory]
-  resources :tournaments do
+  resources :matches, :except => [:new] do
     resources :awards
+  end
+
+  resources :tournaments do
+    resources :matches
   end
 
   resources :users, :only => [:index, :show]

@@ -1,0 +1,21 @@
+%h1
+  = @match.name
+  %small
+    = link_to @match.tournament.name, @match.tournament
+%p
+  %b Game:
+  = @match.game
+
+%p 
+  %b Start:
+  = @match.start
+
+%p
+  %b Duration:
+  = @match.p_duration + "m"
+
+-# Awards
+
+= link_to 'Edit', edit_tournament_match_path(@match.tournament, @match)
+\|
+= link_to 'Back', tournament_matches_path(@match.tournament)
