@@ -3,17 +3,26 @@
   %small
     = @tournament.start
 
-- unless @tournament.awards.empty?
-  %h2
-    Awards
+- unless @tournament.matches.empty?
+  %p
+    %h2
+      Matches
 
-  %ul.awards
-    - @tournament.awards.order('amount DESC').each do |award|
-      %li
-        %strong
-          = award.print_username
-        %span.badge
-          = award.amount
+    %ul.matches
+      - @tournament.matches.order('start').each do |match|
+        %li
+          %strong
+            = link_to match.name, match
+          \-
+          %span.game
+            = match.game
+          %span.start
+            = distance_of_time_in_words match.start, Time.now
+            - if match.start < Time.now
+              ago
+            - else
+              away
+
 
 %ul.pager
   %li.previous
@@ -21,4 +30,4 @@
   %li
     = link_to 'Edit', edit_tournament_path(@tournament)
   %li.next
-    = link_to 'New Award', new_tournament_award_path(@tournament)
+    = link_to 'New Match', new_tournament_match_path(@tournament)

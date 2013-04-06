@@ -2,14 +2,14 @@
   %b User:
   = @award.print_username
 %p
-  %b Tournament:
-  = link_to @award.tournament.name, @award.tournament
+  %b Match:
+  = link_to @award.match.name, @award.match
 %p
   %b Amount:
   = @award.amount
 
 %ul.pager
   %li.previous
-    = link_to 'Back', tournament_awards_path(@award.tournament)
+    = link_to 'Back', match_awards_path(@award.match)
   %li
     = link_to 'Edit', edit_award_path(@award)

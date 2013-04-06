@@ -3,10 +3,10 @@ class AwardsController < ApplicationController
   # GET /awards.json
   def index
 
-    tournament = params[:tournament_id]
+    match = params[:match_id]
 
-    @awards = Award.where(:tournament_id => tournament)
-    @awards = Award.all if (@award.empty?)
+    @awards = Award.where(:match_id => match)
+    @awards = Award.all if (@awards.empty?)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -31,8 +31,8 @@ class AwardsController < ApplicationController
 
     @award = Award.new
 
-    if params[:tournament_id]
-      @award.tournament_id = params[:tournament_id]
+    if params[:match_id]
+      @award.match_id = params[:match_id]
     end
 
     respond_to do |format|
@@ -75,7 +75,17 @@ class AwardsController < ApplicationController
   # PUT /awards/1
   # PUT /awards/1.json
   def update
-    @award = Award.find(params[:id])
+
+    @username = params[:user][:username]
+    @award = Award.new(params[:award])
+    
+    @user = User.where(:username => @username).first
+
+    if @user
+      @award.user = @user
+    else
+      @award.username = @username
+    end
 
     respond_to do |format|
       if @award.update_attributes(params[:award])

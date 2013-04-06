@@ -11,10 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130405144122) do
+ActiveRecord::Schema.define(:version => 20130406002447) do
 
   create_table "awards", :force => true do |t|
-    t.integer  "user_id"
     t.integer  "match_id"
     t.integer  "amount"
     t.string   "username",   :default => ""
@@ -23,7 +22,6 @@ ActiveRecord::Schema.define(:version => 20130405144122) do
   end
 
   add_index "awards", ["match_id"], :name => "index_awards_on_tournament_id"
-  add_index "awards", ["user_id"], :name => "index_awards_on_user_id"
 
   create_table "matches", :force => true do |t|
     t.string   "name"

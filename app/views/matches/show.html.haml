@@ -14,8 +14,23 @@
   %b Duration:
   = @match.p_duration + "m"
 
--# Awards
+- unless @match.awards.empty?
+  %p
+    %h2
+      Scores
+    %ul.awards
+      - @match.awards.group(:username).sum(:amount).each do |award|
+        %li
+          %strong
+            = award[0]
 
-= link_to 'Edit', edit_tournament_match_path(@match.tournament, @match)
-\|
-= link_to 'Back', tournament_matches_path(@match.tournament)
+            %span.badge
+            = award[1]
+
+%ul.pager
+  %li.previous
+    = link_to 'Back', tournament_matches_path(@match.tournament)
+  %li
+    = link_to 'Edit', edit_tournament_match_path(@match.tournament, @match)
+  %li.next
+    = link_to 'New Award', new_match_award_path(@match)
