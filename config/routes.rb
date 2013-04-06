@@ -9,7 +9,7 @@ Rankable::Application.routes.draw do
     resources :matches
   end
 
-  resources :users, :only => [:index, :show]
+  resources :users, :only => [:index]
 
   devise_for :users
 
