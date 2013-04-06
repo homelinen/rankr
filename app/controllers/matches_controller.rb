@@ -1,4 +1,6 @@
 class MatchesController < ApplicationController
+  load_and_authorize_resource :match
+
   # GET /matches
   # GET /matches.json
   def index
@@ -27,10 +29,15 @@ class MatchesController < ApplicationController
   # GET /matches/new
   # GET /matches/new.json
   def new
+    
     @match = Match.new
 
     if params[:tournament_id]
       @match.tournament_id = params[:tournament_id]
+    end
+
+    if cannot? :manage, @match.tournament
+      raise CanCan::AccessDenied.new("You don't have permission to do that", :create, Match)
     end
 
     respond_to do |format|

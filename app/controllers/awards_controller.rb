@@ -1,4 +1,6 @@
 class AwardsController < ApplicationController
+  load_and_authorize_resource :award
+  
   # GET /awards
   # GET /awards.json
   def index
@@ -33,6 +35,10 @@ class AwardsController < ApplicationController
 
     if params[:match_id]
       @award.match_id = params[:match_id]
+    end
+
+    if cannot? :manage, @award.match
+      raise CanCan::AccessDenied.new("You don't have permission to do that", :create, Match)
     end
 
     respond_to do |format|

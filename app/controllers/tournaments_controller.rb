@@ -1,5 +1,5 @@
 class TournamentsController < ApplicationController
-  before_filter :authenticate_user!, :only => [:new]
+  load_and_authorize_resource
 
   # GET /tournaments
   # GET /tournaments.json
