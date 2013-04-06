@@ -12,7 +12,7 @@
 
 %p
   %b Duration:
-  = @match.p_duration + "m"
+  = @match.p_duration + "h"
 
 - unless @match.awards.empty?
   %p
@@ -24,7 +24,7 @@
           %strong
             = award[0]
 
-            %span.badge
+          %span.badge
             = award[1]
 
 %ul.pager

@@ -3,21 +3,19 @@
 %table.table.table-bordered
   %tr
     %th User
-    %th Tournament
+    %th Match
     %th Amount
-    %th
     %th
     %th
 
   - @awards.each do |award|
     %tr
-      %td= award.print_username
-      %td= link_to award.tournament.name, award.tournament
+      %td= award.username
+      %td= link_to award.match.name, award.match
       %td= award.amount
-      %td= link_to 'Show', award
       %td= link_to 'Edit', edit_award_path(award)
       %td= link_to 'Destroy', award, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Award', new_tournament_award_path
+= link_to 'New Award', new_match_award_path
