@@ -4,7 +4,11 @@ class TournamentsController < ApplicationController
   # GET /tournaments
   # GET /tournaments.json
   def index
-    @tournaments = Tournament.order('start').all
+    if params[:user_id]
+      @tournaments = Tournament.where(:user_id => params[:user_id])
+    else
+      @tournaments = Tournament.order('start').all
+    end
 
     respond_to do |format|
       format.html # index.html.erb

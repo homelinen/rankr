@@ -1,4 +1,6 @@
-%h1 Listing tournaments
+%h1 
+  = "Personal" if @user_page
+  Tournaments
 
 %table{:class => %w(table table-bordered table-striped)}
   %tr
@@ -18,4 +20,4 @@
 
 %br
 
-= link_to 'New Tournament', new_tournament_path
+= link_to 'New Tournament', new_tournament_path, :class => "btn"
