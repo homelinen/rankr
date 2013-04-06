@@ -16,17 +16,6 @@ class AwardsController < ApplicationController
     end
   end
 
-  # GET /awards/1
-  # GET /awards/1.json
-  def show
-    @award = Award.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @award }
-    end
-  end
-
   # GET /awards/new
   # GET /awards/new.json
   def new
@@ -69,7 +58,7 @@ class AwardsController < ApplicationController
 
     respond_to do |format|
       if @award.save
-        format.html { redirect_to @award, notice: 'Award was successfully created.' }
+        format.html { redirect_to @award.match, notice: 'Award was successfully created.' }
         format.json { render json: @award, status: :created, location: @award }
       else
         format.html { render action: "new" }
@@ -95,7 +84,7 @@ class AwardsController < ApplicationController
 
     respond_to do |format|
       if @award.update_attributes(params[:award])
-        format.html { redirect_to @award, notice: 'Award was successfully updated.' }
+        format.html { redirect_to @award.match, notice: 'Award was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
