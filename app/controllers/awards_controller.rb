@@ -45,17 +45,8 @@ class AwardsController < ApplicationController
   # POST /awards.json
   def create
 
-    @username = params[:user][:username]
     @award = Award.new(params[:award])
     
-    @user = User.where(:username => @username).first
-
-    if @user
-      @award.user = @user
-    else
-      @award.username = @username
-    end
-
     respond_to do |format|
       if @award.save
         format.html { redirect_to @award.match, notice: 'Award was successfully created.' }
@@ -97,10 +88,11 @@ class AwardsController < ApplicationController
   # DELETE /awards/1.json
   def destroy
     @award = Award.find(params[:id])
+    match = @award.match
     @award.destroy
 
     respond_to do |format|
-      format.html { redirect_to awards_url }
+      format.html { redirect_to match_awards_url(match) }
       format.json { head :no_content }
     end
   end
