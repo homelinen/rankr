@@ -1,28 +1,32 @@
-%h1 Rankable
+.welcome.text-center
+  %h1 Rankr
 
-.welcome
   %p.lead
     Welcome to Rankr! Where you can monitor and manage tournaments and games.
 
-  .row
-    .span4
-      :markdown
-        ## Use Cases ##
+.row
+  .span4
+    :markdown
+      ## Use Cases ##
 
-        1. Board Game nights
-        2. LAN Parties
-        3. Simple sports tournaments
+      1. Board Game nights
+      2. LAN Parties
+      3. Simple sports tournaments
 
-    .span4
-      
-      %h2 Join
-      %p
-        Rankr is a free service, if you want to create a tournament and start tracking, just sign up.
+  .span4
+    
+    %h2 Join
+    %p
+      Rankr is a free service, if you want to create a tournament and start tracking, just sign up.
 
-      %p.text-center
-        = link_to "Sign Up!", new_user_registration_path, :class => "btn btn-primary btn-large"
+    %p.text-center
+      = link_to "Sign Up!", new_user_registration_path, :class => "btn btn-primary btn-large"
 
-    .span4
-      %h2 Latest Tournaments
+  .span4
+    %h2 Latest Tournaments
 
-      %p Upcoming Tournaments
+    %ul
+      - Match.order(:start).limit(5).each do |match|
+        %li
+          = render :partial => 'matches/match_item', :locals => {:match => match}
+

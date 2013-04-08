@@ -11,17 +11,7 @@
     %ul.matches
       - @tournament.matches.order('start').each do |match|
         %li
-          %strong
-            = link_to match.name, match
-          \-
-          %span.game
-            = match.game
-          %span.start
-            = distance_of_time_in_words match.start, Time.now
-            - if match.start < Time.now
-              ago
-            - else
-              away
+          = render :partial => 'matches/match_item', :locals => {:match => match}
 
 
 %ul.pager
