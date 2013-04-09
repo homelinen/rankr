@@ -5,6 +5,7 @@
     %th User
     %th Match
     %th Amount
+    %th Created At
     %th
     %th
 
@@ -13,6 +14,7 @@
       %td= award.username
       %td= link_to award.match.name, award.match
       %td= award.amount
+      %td= l award.created_at.to_time, :format => :short
       %td= link_to 'Edit', edit_award_path(award)
       %td= link_to 'Destroy', award, :method => :delete, :data => { :confirm => 'Are you sure?' }
 

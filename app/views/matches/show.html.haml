@@ -31,6 +31,8 @@
               = award[1]
           %td
             = award[0]
+    %p
+      = link_to 'Points Breakdown', match_awards_path(@match), :class => 'btn btn-info btn-small'
 
 %ul.pager
   %li.previous

@@ -7,7 +7,7 @@ class AwardsController < ApplicationController
 
     match = params[:match_id]
 
-    @awards = Award.where(:match_id => match)
+    @awards = Award.order('created_at DESC').where(:match_id => match)
     @awards = Award.all if (@awards.empty?)
 
     respond_to do |format|
