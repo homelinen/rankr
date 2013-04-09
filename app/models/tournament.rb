@@ -7,4 +7,16 @@ class Tournament < ActiveRecord::Base
   validates_presence_of :name, :user
 
   validates_associated :user
+
+  def participants
+    usernames = []
+
+    Award.joins(:match).where(:matches => { 
+                              :tournament_id => id }
+             ).select(:username).uniq.each do |award|
+               usernames.push award.username
+             end
+
+    usernames
+  end
 end
