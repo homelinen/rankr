@@ -6,7 +6,7 @@
   = match.game
 %span.start
   = distance_of_time_in_words match.start, Time.now
-  - if match.start < Time.now
+  - if match.start.past?
     ago
   - else
     away

@@ -9,4 +9,9 @@ class Match < ActiveRecord::Base
   def p_duration
     "#{duration/60}:#{"%02d" % (duration % 60)}" 
   end
+
+  # Total the scores by username
+  def total_scores
+    awards.order('amount DESC').group(:username).sum(:amount)
+  end
 end

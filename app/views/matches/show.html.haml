@@ -18,14 +18,19 @@
   %p
     %h2
       Scores
-    %ul.awards
-      - @match.awards.group(:username).sum(:amount).each do |award|
-        %li
-          %strong
+    %table.table.table-bordered.awards
+      %thead
+        %tr
+          %th Points
+          %th Username
+      %tbody
+      - @match.total_scores.each do |award|
+        %tr
+          %td.text-center
+            %span.badge.badge-info
+              = award[1]
+          %td
             = award[0]
-
-          %span.badge
-            = award[1]
 
 %ul.pager
   %li.previous
