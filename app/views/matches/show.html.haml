@@ -15,6 +15,22 @@
   = @match.p_duration + "h"
 
 - unless @match.awards.empty?
+
+  - winner = @match.winner
+  - if winner
+    %h2 Outcome
+    %p 
+      - if winner.count == 1
+        - styling = {:class => 'label-success', :message => 'has won'}
+      - else
+        - styling = {:class => 'label-warning', :message => 'have drawn'}
+
+      - winners = winner.map do |user|
+        - content_tag :span, user, :class => "label #{styling[:class]}"
+
+      = winners.join(", ").html_safe
+      = styling[:message]
+
   %p
     %h2
       Scores

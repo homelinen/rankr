@@ -14,4 +14,20 @@ class Match < ActiveRecord::Base
   def total_scores
     awards.order('amount DESC').group(:username).sum(:amount)
   end
+
+  # Get the winner(s) for the match
+  #
+  # Returns an array of winners or a singleton array for a clear winner
+  def winner
+
+    if awards.count > 0
+      scores = total_scores
+
+      # Find the top scores
+      top_score = scores.select { |k,v| v == scores.first[1] }
+
+      top_score.keys
+    end
+
+  end
 end
