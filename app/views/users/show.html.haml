@@ -1,0 +1,18 @@
+%h1= @user.username
+
+- if !@user.tournaments.empty?
+  %h2 Tournaments
+
+  %ul.tournaments
+    - @user.tournaments.each do |tournament|
+    
+      %li= link_to tournament.name, tournament
+
+- else
+  %p No Tournaments, yet
+
+
+- if current_user == @user
+
+  %p 
+    = link_to 'New Tournament', new_tournament_path, :class => "btn"

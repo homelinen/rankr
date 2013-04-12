@@ -3,6 +3,10 @@
   %small
     = @tournament.start
 
+%p 
+  %b Organised by:
+  = link_to @tournament.user.username, @tournament.user
+
 - unless @tournament.matches.empty?
   %h2 Matches
 
@@ -27,9 +31,6 @@
     %ul.participants
       - @tournament.participants.each do |user|
         %li= user
-
-    
-
 
 %ul.pager
   %li.previous

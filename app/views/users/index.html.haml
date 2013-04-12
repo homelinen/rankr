@@ -1,0 +1,23 @@
+%h1 Organisers
+
+%table.table.table-bordered
+  %thead
+    %tr
+      %th Name
+      %th No. Tournaments
+      %th
+      %th
+      %th
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.username
+        %td= user.tournaments.count
+        %td= link_to 'Show', user
+        %td= link_to 'Edit', edit_user_registration_path
+        %td= link_to 'Destroy', user, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+- unless current_user
+  %p
+    = link_to "Sign Up", user_registration_path, :class => :btn
+
