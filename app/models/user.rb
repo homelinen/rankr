@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
 
   has_many :tournaments
-  has_many :awards
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
