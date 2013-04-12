@@ -14,6 +14,14 @@
 
 - unless @tournament.participants.empty?
   
+  %h2 Winners
+
+  %p
+    %ul.winners
+      - @tournament.results.each do |winner|
+        %li
+          = winner[0]
+          %span.label.label-success= winner[1]
   %h2 Participants
   %p
     %ul.participants
