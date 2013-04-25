@@ -7,6 +7,9 @@ gem 'rails', '3.2.13'
 
 gem 'sqlite3'
 
+# JS Runtime
+gem 'therubyracer', '~> 0.11.4'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
